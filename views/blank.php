@@ -9,7 +9,7 @@ $_SESSION['page-url'] = "";
 
 <head><?php require_once("../resources/dash-header.php") ?></head>
 
-<body>
+<body style="font-family: 'Montserrat', sans-serif;">
   <?php if (isset($_SESSION['message-success'])) { ?>
     <div class="message-success" data-message-success="<?= $_SESSION['message-success'] ?>"></div>
   <?php }
@@ -28,7 +28,29 @@ $_SESSION['page-url'] = "";
       <?php require_once("../resources/dash-sidebar.php") ?>
       <div class="main-panel">
         <div class="content-wrapper">
-          <!--  -->
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="home-tab">
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <h3><?= $_SESSION['page-name'] ?></h3>
+                    </li>
+                  </ul>
+                  <div>
+                    <div class="btn-wrapper">
+                      <a href="#" class="btn btn-primary text-white me-0" data-bs-toggle="modal" data-bs-target="#tambah-pengguna">Tambah</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card rounded-0 mt-3">
+                  <div class="card-body table-responsive">
+                    <!--  -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <?php require_once("../resources/dash-footer.php") ?>
 </body>
