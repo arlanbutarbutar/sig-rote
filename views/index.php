@@ -42,7 +42,7 @@ $_SESSION['page-url'] = "./";
                   </ul>
                   <div>
                     <div class="btn-wrapper">
-                      <a href="report" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                      <!-- <a href="report" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a> -->
                     </div>
                   </div>
                 </div>

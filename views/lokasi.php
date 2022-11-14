@@ -61,7 +61,7 @@ if (!isset($_GET['id'])) {
           var map = L.map('map').setView([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>], 12);
           var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-          L.marker([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>]).bindPopup("<div><img src='../assets/images/wisata/<?= $row['image'] ?>' style='width: 100%;' alt=''><h4 style='margin-top: 5px;'><?= $row['nama_wisata'] ?></h4><p style='margin-top: -5px;'><?= $row['deskripsi'] ?></p></div>").addTo(map);
+          L.marker([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>]).bindPopup("<div><img src='../assets/images/wisata/<?= $row['image'] ?>' style='width: 100%;' alt=''><h4 style='margin-top: 5px;'><?= $row['nama_wisata'] ?></h4><p style='margin-top: -5px;'><?= $row['deskripsi'] ?></p><small><?= $row['alamat']?></small></div>").addTo(map);
         </script>
 </body>
 

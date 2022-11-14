@@ -29,6 +29,95 @@ if (isset($_SESSION['time-message'])) {
 
 $baseURL = "http://$_SERVER[HTTP_HOST]/apps/sig-rote/";
 
+$kategori_wisata = mysqli_query($conn, "SELECT * FROM kategori_wisata ORDER BY id_kategori_wisata DESC");
+$fasilitas_wisata = mysqli_query($conn, "SELECT * FROM fasilitas JOIN wisata ON fasilitas.id_fasilitas ORDER BY fasilitas.id_fasilitas DESC LIMIT 9");
+$tujuan_wisata = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata ORDER BY wisata.id_wisata DESC LIMIT 3");
+$select_locationMaps = mysqli_query($conn, "SELECT * FROM wisata");
+$count_wisata = mysqli_query($conn, "SELECT * FROM wisata");
+$count_wisata = mysqli_num_rows($count_wisata);
+$count_fasilitas = mysqli_query($conn, "SELECT * FROM fasilitas");
+$count_fasilitas = mysqli_num_rows($count_fasilitas);
+
+if (!isset($_GET['kategori'])) {
+  $data_front1 = 25;
+  $result_front1 = mysqli_query($conn, "SELECT * FROM fasilitas JOIN kategori_fasilitas ON fasilitas.id_kategori_fasilitas=kategori_fasilitas.id_kategori_fasilitas");
+  $total_front1 = mysqli_num_rows($result_front1);
+  $total_page_front1 = ceil($total_front1 / $data_front1);
+  $page_front1 = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+  $awal_data_front1 = ($page_front1 > 1) ? ($page_front1 * $data_front1) - $data_front1 : 0;
+  $frontFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas JOIN kategori_fasilitas ON fasilitas.id_kategori_fasilitas=kategori_fasilitas.id_kategori_fasilitas ORDER BY fasilitas.id_fasilitas DESC LIMIT $awal_data_front1, $data_front1");
+} else if (isset($_GET['kategori'])) {
+  $keyword = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_GET['kategori']))));
+  $keyword = str_replace("-", " ", $keyword);
+  $data_front1 = 25;
+  $result_front1 = mysqli_query($conn, "SELECT * FROM fasilitas JOIN kategori_fasilitas ON fasilitas.id_kategori_fasilitas=kategori_fasilitas.id_kategori_fasilitas");
+  $total_front1 = mysqli_num_rows($result_front1);
+  $total_page_front1 = ceil($total_front1 / $data_front1);
+  $page_front1 = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+  $awal_data_front1 = ($page_front1 > 1) ? ($page_front1 * $data_front1) - $data_front1 : 0;
+  $frontFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas JOIN kategori_fasilitas ON fasilitas.id_kategori_fasilitas=kategori_fasilitas.id_kategori_fasilitas WHERE kategori_fasilitas.nama_kfasilitas='$keyword' ORDER BY fasilitas.id_fasilitas DESC LIMIT $awal_data_front1, $data_front1");
+}
+
+$list_kfasilitas = mysqli_query($conn, "SELECT * FROM kategori_fasilitas ORDER BY id_kategori_fasilitas DESC");
+
+if (!isset($_GET['kategori-wisata'])) {
+  if (!isset($_GET['fasilitas'])) {
+    $data_front2 = 25;
+    $result_front2 = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas");
+    $total_front2 = mysqli_num_rows($result_front2);
+    $total_page_front2 = ceil($total_front2 / $data_front2);
+    $page_front2 = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+    $awal_data_front2 = ($page_front2 > 1) ? ($page_front2 * $data_front2) - $data_front2 : 0;
+    $frontWisata = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas ORDER BY wisata.id_wisata DESC LIMIT $awal_data_front2, $data_front2");
+  } else if (isset($_GET['fasilitas'])) {
+    $keyword = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_GET['fasilitas']))));
+    $keyword = str_replace("-", " ", $keyword);
+    $data_front2 = 25;
+    $result_front2 = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas");
+    $total_front2 = mysqli_num_rows($result_front2);
+    $total_page_front2 = ceil($total_front2 / $data_front2);
+    $page_front2 = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+    $awal_data_front2 = ($page_front2 > 1) ? ($page_front2 * $data_front2) - $data_front2 : 0;
+    $frontWisata = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas WHERE fasilitas.nama_fasilitas='$keyword' ORDER BY wisata.id_wisata DESC LIMIT $awal_data_front2, $data_front2");
+  }
+} else if (isset($_GET['kategori-wisata'])) {
+  $keyword = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_GET['kategori-wisata']))));
+  $keyword = str_replace("-", " ", $keyword);
+  $data_front2 = 25;
+  $result_front2 = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas");
+  $total_front2 = mysqli_num_rows($result_front2);
+  $total_page_front2 = ceil($total_front2 / $data_front2);
+  $page_front2 = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+  $awal_data_front2 = ($page_front2 > 1) ? ($page_front2 * $data_front2) - $data_front2 : 0;
+  $frontWisata = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas WHERE kategori_wisata.nama_kwisata='$keyword' ORDER BY wisata.id_wisata DESC LIMIT $awal_data_front2, $data_front2");
+}
+if (isset($_GET['tujuan'])) {
+  $keyword = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_GET['tujuan']))));
+  $keyword = str_replace("-", " ", $keyword);
+  $viewWisata = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas WHERE wisata.nama_wisata='$keyword'");
+}
+
+$list_kwisata = mysqli_query($conn, "SELECT * FROM kategori_wisata ORDER BY id_kategori_wisata DESC");
+$list_fasilitas = mysqli_query($conn, "SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
+
+$recent_post = mysqli_query($conn, "SELECT * FROM wisata ORDER BY id_wisata DESC LIMIT 5");
+
+$select_wisata = mysqli_query($conn, "SELECT * FROM wisata ORDER BY wisata.id_wisata DESC");
+if (isset($_POST['loc'])) {
+  if ($_POST['id-wisata'] == 0) {
+    $_SESSION['message-danger'] = "Maaf, anda belum memilih tujuan wisata anda!";
+    $_SESSION['time-message'] = time();
+    header("Location: ./");
+    return false;
+  }
+  $_SESSION['tujuan-wisata'] = [
+    'loc' => htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_POST['loc'])))),
+    'id-wisata' => htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_POST['id-wisata']))))
+  ];
+  header("Location: tujuan-wisata");
+  exit();
+}
+
 if (!isset($_SESSION['data-user'])) {
   if (isset($_POST['masuk'])) {
     if (masuk($_POST) > 0) {
@@ -50,6 +139,17 @@ if (isset($_SESSION['data-user'])) {
       exit();
     }
   }
+
+  $countKFasilitas = mysqli_query($conn, "SELECT * FROM kategori_fasilitas");
+  $countKFasilitas = mysqli_num_rows($countKFasilitas);
+  $countKWisata = mysqli_query($conn, "SELECT * FROM kategori_wisata");
+  $countKWisata = mysqli_num_rows($countKWisata);
+  $countFasilitas = mysqli_query($conn, "SELECT * FROM fasilitas");
+  $countFasilitas = mysqli_num_rows($countFasilitas);
+  $countWisata = mysqli_query($conn, "SELECT * FROM wisata");
+  $countWisata = mysqli_num_rows($countWisata);
+  
+  $wisataOverview = mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata JOIN fasilitas ON wisata.id_fasilitas=fasilitas.id_fasilitas JOIN kategori_fasilitas ON fasilitas.id_kategori_fasilitas=kategori_fasilitas.id_kategori_fasilitas ORDER BY wisata.id_wisata DESC LIMIT 25");
 
   $data_role1 = 25;
   $result_role1 = mysqli_query($conn, "SELECT * FROM users WHERE id_user!='$idUser'");
