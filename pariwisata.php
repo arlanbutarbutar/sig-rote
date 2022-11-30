@@ -38,14 +38,16 @@ $_SESSION['page-url'] = "pariwisata";
       <div class="row">
         <div class="col-lg-6" style="min-height: 500px;">
           <div class="position-relative h-100">
-            <img class="position-absolute w-100 h-100" src="assets/images/data-pariwisata.jpg" style="object-fit: cover;">
+            <img class="position-absolute w-100" src="assets/images/data-pariwisata.jpg" style="object-fit: cover;">
           </div>
         </div>
         <div class="col-lg-6 pt-5 pb-lg-5">
           <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Profil</h6>
-            <h1 class="mb-3">Pariwisata</h1>
-            <p>Visi, misi Kepala Daerah dan Wakil Kepala Daerah Terpilih tahun 2019-2024 adalah Terwujudnya Masyarakat Rote Ndao yang BERMARTABAT secara Berkelanjutan Bertumpu Pada Pariwisata yang di dukung oleh Pertanian dan Perikanan. Adanya potensi yang dimiliki oleh Kabupaten Rote Ndao, tidak menutup kemungkinan dapat berkembangnya berbagai sentra kerajinan rakyat, terutama yang potensial dapat dijual untuk industri pariwisata, misalnya dengan menjual atraksi metode pembuatan kerajinan dari daun lontar, kain tenun khas Rote Ndao, kerang-kerang laut, dan lain sebagainya, sehingga menarik perhatian wisatawan. Pembangunan gedung serbaguna untuk kegiatan pameran bagi produk kerajinan maupun kegiatan seni dan budaya, akan membuat masyarakat umum dan wisatawan mengenal kerajinan dan budaya yang ada di Kabupaten Rote Ndao.</p>
+            <h6 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Profil</h6>
+            <h1 class="mb-3">Dinas Pariwisata Rote Ndao</h1>
+            <h4 class="mb-3 text-center">Struktur Organisasi</h4>
+            <img src="assets/images/struktur-organisasi.jpg" style="width: 100%;" alt="Struktur Organisasi">
+            <p class="mt-4">Visi dan Misi Kepala Daerah dan Wakil Kepala Daerah Terpilih tahun 2019-2024 adalah Terwujudnya Masyarakat Rote Ndao yang BERMARTABAT secara Berkelanjutan Bertumpu Pada Pariwisata yang di dukung oleh Pertanian dan Perikanan. Adanya potensi yang dimiliki oleh Kabupaten Rote Ndao, tidak menutup kemungkinan dapat berkembangnya berbagai sentra kerajinan rakyat, terutama yang potensial dapat dijual untuk industri pariwisata, misalnya dengan menjual atraksi metode pembuatan kerajinan dari daun lontar, kain tenun khas Rote Ndao, kerang-kerang laut, dan lain sebagainya, sehingga menarik perhatian wisatawan. Pembangunan gedung serbaguna untuk kegiatan pameran bagi produk kerajinan maupun kegiatan seni dan budaya, akan membuat masyarakat umum dan wisatawan mengenal kerajinan dan budaya yang ada di Kabupaten Rote Ndao.</p>
             <div class="row mb-4">
               <div class="col-lg-6">
                 <a href="fasilitas" class="text-decoration-none">

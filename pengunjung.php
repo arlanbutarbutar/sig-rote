@@ -1,6 +1,6 @@
 <?php require_once("controller/script.php");
-$_SESSION['page-name'] = "";
-$_SESSION['page-url'] = "./";
+$_SESSION['page-name'] = "Pengunjung";
+$_SESSION['page-url'] = "pengunjung";
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +38,8 @@ $_SESSION['page-url'] = "./";
       <div class="row align-items-center">
         <div class="col-lg-4 mb-5 mb-lg-0">
           <div class="mb-4">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Rote Ndao</h6>
-            <h1 class="text-white"><span class="text-primary">Data Kunjungan Wisatawan</span> Mancanegara Dan Nusantara Tahun 2017-2021</h1>
+            <h6 class="text-white text-uppercase" style="letter-spacing: 5px;">Rote Ndao</h6>
+            <h1 class="text-white"><span class="text-white">Data Kunjungan Wisatawan</span> Mancanegara Dan Nusantara Tahun 2017-2021</h1>
           </div>
         </div>
         <div class="col-lg-8">

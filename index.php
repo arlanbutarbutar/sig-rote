@@ -38,7 +38,7 @@ $_SESSION['page-name'] = "";
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
             <div class="p-3" style="max-width: 900px;">
               <h4 class="text-white text-uppercase mb-md-3">Tur & Perjalanan</h4>
-              <h1 class="display-3 text-white mb-md-4">Mari Temukan Dunia Bersama</h1>
+              <h1 class="display-3 text-white mb-md-4">Pariwisata Rote Ndao</h1>
               <a href="wisata" class="btn btn-primary py-md-3 px-md-5 mt-2">Lihat Wisata</a>
             </div>
           </div>
@@ -93,7 +93,7 @@ $_SESSION['page-name'] = "";
               </div>
             </div>
             <div class="col-md-2">
-              <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Gass...</button>
+              <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Cari</button>
             </div>
           </div>
         </form>
@@ -105,6 +105,10 @@ $_SESSION['page-name'] = "";
   <!-- Kategori Wisata Start -->
   <div class="container-fluid">
     <div class="container pt-5 pb-3">
+      <div class="text-center mb-3 pb-3">
+        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"></h6>
+        <h1>Kategori Wisata</h1>
+      </div>
       <div class="row flex-nowrap kategori-wisata">
         <?php if (mysqli_num_rows($kategori_wisata) > 0) {
           while ($row_kw = mysqli_fetch_assoc($kategori_wisata)) { ?>
