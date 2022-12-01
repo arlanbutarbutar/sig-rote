@@ -37,8 +37,8 @@ $_SESSION['page-name'] = "";
           <img class="w-100" src="assets/images/carousel-1.jpg" alt="Image">
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
             <div class="p-3" style="max-width: 900px;">
-              <h4 class="text-white text-uppercase mb-md-3">Tur & Perjalanan</h4>
-              <h1 class="display-3 text-white mb-md-4">Pariwisata Rote Ndao</h1>
+              <h4 class="text-white text-uppercase mb-md-3">Selamat datang di</h4>
+              <h1 class="display-3 text-white mb-md-4">Dinas Pariwisata Rote Ndao</h1>
               <a href="wisata" class="btn btn-primary py-md-3 px-md-5 mt-2">Lihat Wisata</a>
             </div>
           </div>
@@ -47,8 +47,8 @@ $_SESSION['page-name'] = "";
           <img class="w-100" src="assets/images/carousel-2.jpg" alt="Image">
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
             <div class="p-3" style="max-width: 900px;">
-              <h4 class="text-white text-uppercase mb-md-3">Tur & Perjalanan</h4>
-              <h1 class="display-3 text-white mb-md-4">Temukan Tempat Menakjubkan Bersama Kami</h1>
+              <h4 class="text-white text-uppercase mb-md-3">Selamat datang di</h4>
+              <h1 class="display-3 text-white mb-md-4">Dinas Pariwisata Rote Ndao</h1>
               <a href="wisata" class="btn btn-primary py-md-3 px-md-5 mt-2">Lihat Wisata</a>
             </div>
           </div>
