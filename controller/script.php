@@ -27,7 +27,7 @@ if (isset($_SESSION['time-message'])) {
   }
 }
 
-$baseURL = "http://$_SERVER[HTTP_HOST]/apps/sig-rote/";
+$baseURL = "http://$_SERVER[HTTP_HOST]/sig-rote/";
 
 $kategori_wisata = mysqli_query($conn, "SELECT * FROM kategori_wisata ORDER BY id_kategori_wisata DESC");
 $fasilitas_wisata = mysqli_query($conn, "SELECT * FROM fasilitas JOIN wisata ON fasilitas.id_fasilitas ORDER BY fasilitas.id_fasilitas DESC LIMIT 9");
