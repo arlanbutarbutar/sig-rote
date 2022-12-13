@@ -8,6 +8,10 @@ if (!isset($_GET['id'])) {
   $id = htmlspecialchars(addslashes(trim(mysqli_real_escape_string($conn, $_GET['id']))));
   $result_loc = mysqli_query($conn, "SELECT * FROM wisata WHERE id_wisata='$id'");
   $row = mysqli_fetch_assoc($result_loc);
+  $num_char = 100;
+  $text = trim($row['deskripsi']);
+  $text = preg_replace('#</?strong.*?>#is', '', $text);
+  $deskripsi = substr($text, 0, $num_char) . '...';
   $_SESSION['page-name'] = "Lokasi " . $row['nama_wisata'];
   $_SESSION['page-url'] = "lokasi?id=" . $_GET['id'];
 }
@@ -61,7 +65,7 @@ if (!isset($_GET['id'])) {
           var map = L.map('map').setView([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>], 12);
           var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-          L.marker([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>]).bindPopup("<div><img src='../assets/images/wisata/<?= $row['image'] ?>' style='width: 100%;' alt=''><h4 style='margin-top: 5px;'><?= $row['nama_wisata'] ?></h4><p style='margin-top: -5px;'><?= $row['deskripsi'] ?></p><small><?= $row['alamat']?></small></div>").addTo(map);
+          L.marker([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>]).bindPopup("<div><img src='../assets/images/wisata/<?= $row['image'] ?>' style='width: 100%;' alt=''><h4 style='margin-top: 5px;'><?= $row['nama_wisata'] ?></h4><p style='margin-top: -5px;'><?= $deskripsi ?></p><small><?= $row['alamat']?></small></div>").addTo(map);
         </script>
 </body>
 

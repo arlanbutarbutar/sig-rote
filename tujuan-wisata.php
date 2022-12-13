@@ -45,13 +45,16 @@ if (!isset($_SESSION['tujuan-wisata'])) {
             while ($row_w = mysqli_fetch_assoc($select_locationMaps)) {
               $image = $row_w['image'];
               $nama = $row_w['nama_wisata'];
-              $deskripsi = $row_w['deskripsi'];
+              $num_char = 100;
+              $text = trim($row_w['deskripsi']);
+              $text = preg_replace('#</?strong.*?>#is', '', $text);
+              $deskripsi = substr($text, 0, $num_char) . '...';
               $url_w = "wisata?tujuan=" . $row_w['nama_wisata'];
               $url_w = str_replace(" ", "-", $url_w);
           ?>
               L.marker([<?= $row_w['latitude'] ?>, <?= $row_w['longitude'] ?>], {
                 icon: myIcon
-              }).bindPopup("<div><img src='assets/images/wisata/<?= $image ?>' style='width: 100%;' alt=''><h4 style='margin-top: 5px;'><a href='<?= $url_w ?> '><?= $nama ?></a></h4><p style='margin-top: -5px;'><?= $deskripsi ?></p><small style='letter-spacing: 0;'><?= $row_w['alamat'] ?></small><br><button type='submit' class='btn btn-primary btn-sm mt-3' onclick='return gass(<?= $row_w['latitude'] ?>, <?= $row_w['longitude'] ?>)'>Gass...</button></div>").addTo(map);
+              }).bindPopup("<div><img src='assets/images/wisata/<?= $image ?>' style='width: 100%;' alt=''><h4 style='margin-top: 5px;'><a href='<?= $url_w ?> '><?= $nama ?></a></h4><p style='margin-top: -5px;'><?= $deskripsi ?></p><small style='letter-spacing: 0;'><?= $row_w['alamat'] ?></small><br><button type='submit' class='btn btn-primary btn-sm mt-3' onclick='return gass(<?= $row_w['latitude'] ?>, <?= $row_w['longitude'] ?>)'>Lihat</button></div>").addTo(map);
           <?php }
           } ?>
 
