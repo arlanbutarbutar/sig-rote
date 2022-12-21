@@ -14,13 +14,13 @@
       </div>
     </div>
     <div class="col-lg-8 col-md-6 mb-5">
-      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">PELAYANAN KAMI</h5>
+      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">MENU</h5>
       <div class="d-flex flex-column justify-content-start">
-        <a class="text-white-50 mb-2" href="penduduk"><i class="fa fa-angle-right mr-2"></i>Penduduk</a>
-        <a class="text-white-50 mb-2" href="pariwisata"><i class="fa fa-angle-right mr-2"></i>Pariwisata</a>
-        <a class="text-white-50 mb-2" href="fasilitas"><i class="fa fa-angle-right mr-2"></i>Fasilitas</a>
+        <a class="text-white-50 mb-2" href="./"><i class="fa fa-angle-right mr-2"></i>Beranda</a>
+        <a class="text-white-50 mb-2" href="tentang"><i class="fa fa-angle-right mr-2"></i>Tentang</a>
         <a class="text-white-50 mb-2" href="wisata"><i class="fa fa-angle-right mr-2"></i>Wisata</a>
-        <a class="text-white-50 mb-2" href="pengunjung"><i class="fa fa-angle-right mr-2"></i>Pengunjung</a>
+        <a class="text-white-50 mb-2" href="galeri"><i class="fa fa-angle-right mr-2"></i>Galeri</a>
+        <a class="text-white-50 mb-2" href="peta"><i class="fa fa-angle-right mr-2"></i>Peta</a>
       </div>
     </div>
   </div>

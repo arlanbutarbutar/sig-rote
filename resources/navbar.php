@@ -13,21 +13,39 @@
           <a href="./" class="nav-item nav-link <?php if ($_SESSION['page-url'] == "./") {
                                                   echo "active";
                                                 } ?>">Beranda</a>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profil Daerah</a>
+          <a href="tentang" class="nav-item nav-link <?php if ($_SESSION['page-url'] == "tentang") {
+                                                        echo "active";
+                                                      } ?>">Tentang</a>
+          <a href="wisata" class="nav-item nav-link <?php if ($_SESSION['page-url'] == "wisata") {
+                                                      echo "active";
+                                                    } ?>">Wisata</a>
+          <a href="galeri" class="nav-item nav-link <?php if ($_SESSION['page-url'] == "galeri") {
+                                                      echo "active";
+                                                    } ?>">Galeri</a>
+          <!-- <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle <?php if ($_SESSION['page-url'] == "penduduk" || $_SESSION['page-url'] == "pariwisata") {
+                                                          echo "active";
+                                                        } ?>" data-toggle="dropdown">Profil Daerah</a>
             <div class="dropdown-menu border-0 rounded-0 m-0">
               <a href="penduduk" class="dropdown-item">Penduduk</a>
               <a href="pariwisata" class="dropdown-item">Pariwisata</a>
             </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Layanan</a>
+          </div> -->
+          <!-- <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle <?php if ($_SESSION['page-url'] == "fasilitas" || $_SESSION['page-url'] == "wisata" || $_SESSION['page-url'] == "pengunjung") {
+                                                          echo "active";
+                                                        } ?>" data-toggle="dropdown">Layanan</a>
             <div class="dropdown-menu border-0 rounded-0 m-0">
               <a href="fasilitas" class="dropdown-item">Fasilitas</a>
-              <a href="wisata" class="dropdown-item">Wisata</a>
               <a href="pengunjung" class="dropdown-item">Pengunjung</a>
             </div>
-          </div>
+          </div> -->
+          <a href="peta" class="nav-item nav-link <?php if ($_SESSION['page-url'] == "peta") {
+                                                    echo "active";
+                                                  } ?>">Peta</a>
+          <a href="peta#lokasi" class="nav-item nav-link <?php if ($_SESSION['page-url'] == "peta") {
+                                                    echo "active";
+                                                  } ?>">Lokasi</a>
         </div>
       </div>
     </nav>

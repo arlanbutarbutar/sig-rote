@@ -59,7 +59,7 @@ if ($_SESSION['page-url'] == "wisata") {
             <div class="d-flex mb-2">
               <?php $url_tkw = "wisata?kategori-wisata=" . $row_wisata['nama_kwisata'];
               $url_tkw = str_replace(" ", "-", $url_tkw); ?>
-              <a class="text-primary text-uppercase text-decoration-none" href="<?= $url_tkw ?>"><?= $row_wisata['nama_kwisata'] ?></a>
+              <a class="text-primary text-uppercase text-decoration-none" style="font-size: 12px;" href="<?= $url_tkw ?>"><?= $row_wisata['nama_kwisata'] ?></a>
             </div>
             <?php $url_tw = "wisata?tujuan=" . $row_wisata['nama_wisata'];
             $url_tw = str_replace(" ", "-", $url_tw); ?>

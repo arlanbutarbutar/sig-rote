@@ -1,6 +1,6 @@
 <?php require_once("controller/script.php");
 $_SESSION['page-name'] = "";
-// $_SESSION['page-url'] = "./";
+$_SESSION['page-url'] = "./";
 ?>
 
 <!DOCTYPE html>
@@ -102,63 +102,33 @@ $_SESSION['page-name'] = "";
   </div>
   <!-- Booking End -->
 
-  <!-- Kategori Wisata Start -->
+  <!-- Registration Start -->
+  <!-- style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/images/data-pengunjung.png), no-repeat center center;background-size: cover;object-fit: cover;" -->
   <div class="container-fluid">
-    <div class="container pt-5 pb-3">
-      <div class="text-center mb-3 pb-3">
-        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"></h6>
-        <h1>Kategori Wisata</h1>
-      </div>
-      <div class="row flex-nowrap kategori-wisata">
-        <?php if (mysqli_num_rows($kategori_wisata) > 0) {
-          while ($row_kw = mysqli_fetch_assoc($kategori_wisata)) { ?>
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                <i class="fa fa-2x fa-route mx-auto mb-4"></i>
-                <h5 class="mb-2"><?= $row_kw['nama_kwisata'] ?></h5>
-              </div>
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-md-12 mb-5 mb-lg-0">
+          <div class="mb-4">
+            <h1 class="text-dark text-center mt-5"><span>Data Kunjungan Wisatawan</span> Mancanegara Dan Nusantara Tahun 2017-2021</h1>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card border-0">
+            <div class="card-body rounded-bottom bg-white p-5 data-pengunjung" style="overflow-x: auto;">
+              <?php require_once("dataTable-pengunjung.php") ?>
             </div>
-        <?php }
-        } ?>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Kategori Wisata End -->
-
-  <!-- Wisata Start -->
-  <div class="container-fluid">
-    <div class="container pt-5 pb-3">
-      <div class="text-center mb-3 pb-3">
-        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"></h6>
-        <h1>Fasilitas Wisata</h1>
-      </div>
-      <div class="row">
-        <?php if (mysqli_num_rows($fasilitas_wisata) > 0) {
-          while ($row_fw = mysqli_fetch_assoc($fasilitas_wisata)) { ?>
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="destination-item position-relative overflow-hidden mb-2">
-                <img class="img-fluid" src="assets/images/wisata/<?= $row_fw['image'] ?>" alt="">
-                <a class="destination-overlay text-white text-decoration-none">
-                  <h5 class="text-white"><?= $row_fw['nama_fasilitas'] ?></h5>
-                </a>
-              </div>
-            </div>
-          <?php }
-        }
-        if (mysqli_num_rows($fasilitas_wisata) > 9) { ?>
-          <a href="fasilitas" class="btn btn-primary btn-sm py-md-3 px-md-5 mt-2 mx-auto">Fasilitas Lain</a>
-        <?php } ?>
-      </div>
-    </div>
-  </div>
-  <!-- Wisata Start -->
+  <!-- Registration End -->
 
   <!-- Blog Start -->
   <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
       <div class="text-center mb-3 pb-3">
-        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tujuan</h6>
-        <h1>Jelajahi Destinasi Teratas</h1>
+        <h1>Tempat Wisata</h1>
       </div>
       <div class="row pb-3">
         <?php if (mysqli_num_rows($tujuan_wisata) > 0) {
@@ -184,19 +154,19 @@ $_SESSION['page-name'] = "";
                 </div>
               </div>
             </div>
-          <?php }
-        }
-        if (mysqli_num_rows($fasilitas_wisata) > 9) { ?>
-          <a href="wisata" class="btn btn-primary btn-sm py-md-3 px-md-5 mt-2 mx-auto">Wisata Lain</a>
-        <?php } ?>
+        <?php }
+        } ?>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center justify-content-center">
+          <?php if (mysqli_num_rows($fasilitas_wisata) > 9) { ?>
+            <a href="wisata" class="btn btn-primary btn-sm py-md-3 px-md-5 mt-2">Wisata Lain</a>
+          <?php } ?>
+        </div>
       </div>
     </div>
   </div>
   <!-- Blog End -->
-
-  <!-- Maps Start -->
-  <div id="map" style="width: 100%; height: 500px;"></div>
-  <!-- Maps End -->
 
   <!-- Footer Start -->
   <?php require_once("resources/footer.php"); ?>
@@ -206,29 +176,13 @@ $_SESSION['page-name'] = "";
         e.preventDefault();
         e = window.event || e;
         let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-        document.querySelector('.kategori-wisata').scrollLeft -= (delta * 40);
+        document.querySelector('.data-pengunjung').scrollLeft -= (delta * 40);
       }
-      if (document.querySelector('.kategori-wisata').addEventListener) {
-        document.querySelector('.kategori-wisata').addEventListener('mousewheel', scrollH, false);
-        document.querySelector('.kategori-wisata').addEventListener('DOMMouseScroll', scrollH, false);
+      if (document.querySelector('.data-pengunjung').addEventListener) {
+        document.querySelector('.data-pengunjung').addEventListener('mousewheel', scrollH, false);
+        document.querySelector('.data-pengunjung').addEventListener('DOMMouseScroll', scrollH, false);
       }
     })();
-  </script>
-  <script>
-    var map = L.map('map').setView([-10.7329607, 123.111856], 12);
-    var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
-
-    <?php if (mysqli_num_rows($select_locationMaps) > 0) {
-      while ($row = mysqli_fetch_assoc($select_locationMaps)) {
-        $image = $row['image'];
-        $nama = $row['nama_wisata'];
-        $deskripsi = $row['deskripsi'];
-        $url = "wisata?tujuan=" . $row['nama_wisata'];
-        $url = str_replace(" ", "-", $url);
-    ?>
-        L.marker([<?= $row['latitude'] ?>, <?= $row['longitude'] ?>]).bindPopup("<div><img src='assets/images/wisata/<?= $image ?>' style='width: 100%;' alt=''><h4 style='margin-top: 5px;'><a href='<?= $url ?> '><?= $nama ?></a></h4><p style='margin-top: -5px;'><?= $deskripsi ?></p><small style='letter-spacing: 0;'><?= $row['alamat'] ?></small></div>").addTo(map);
-    <?php }
-    } ?>
   </script>
   <!-- Footer End -->
 </body>

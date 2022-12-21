@@ -27,7 +27,7 @@ if (isset($_SESSION['time-message'])) {
   }
 }
 
-$baseURL = "http://$_SERVER[HTTP_HOST]/sig-rote/";
+$baseURL = "http://$_SERVER[HTTP_HOST]/apps/sig-rote/";
 
 $kategori_wisata = mysqli_query($conn, "SELECT * FROM kategori_wisata ORDER BY id_kategori_wisata DESC");
 $fasilitas_wisata = mysqli_query($conn, "SELECT * FROM fasilitas JOIN wisata ON fasilitas.id_fasilitas ORDER BY fasilitas.id_fasilitas DESC LIMIT 9");
@@ -117,6 +117,8 @@ if (isset($_POST['loc'])) {
   header("Location: tujuan-wisata");
   exit();
 }
+$peta_wisata=mysqli_query($conn, "SELECT * FROM wisata");
+$lokasi_wisata=mysqli_query($conn, "SELECT * FROM wisata JOIN kategori_wisata ON wisata.id_kategori_wisata=kategori_wisata.id_kategori_wisata");
 
 if (!isset($_SESSION['data-user'])) {
   if (isset($_POST['masuk'])) {

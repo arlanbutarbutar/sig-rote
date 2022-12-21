@@ -50,7 +50,7 @@ $_SESSION['page-url'] = "wisata";
                         <div class="d-flex mb-2">
                           <?php $url_tkw = "wisata?kategori-wisata=" . $row_wisata['nama_kwisata'];
                           $url_tkw = str_replace(" ", "-", $url_tkw); ?>
-                          <a class="text-primary text-uppercase text-decoration-none" href="<?= $url_tkw ?>"><?= $row_wisata['nama_kwisata'] ?></a>
+                          <a class="text-primary text-uppercase text-decoration-none" style="font-size: 12px;" href="<?= $url_tkw ?>"><?= $row_wisata['nama_kwisata'] ?></a>
                         </div>
                         <?php $url_tw = "wisata?tujuan=" . $row_wisata['nama_wisata'];
                         $url_tw = str_replace(" ", "-", $url_tw); ?>
@@ -195,17 +195,26 @@ $_SESSION['page-url'] = "wisata";
                 <!-- Comment List Start -->
                 <div class="bg-white" style="padding: 30px; margin-bottom: 30px;">
                   <div id="map" style="width: 100%; height: 500px;"></div>
-                  <?php
-                  $ip = $_SERVER['REMOTE_ADDR'];
-                  $geolocation_json = json_decode(file_get_contents("https://ipinfo.io/{$ip}/json"));
-                  ?>
+                      <?php
+                      $ch = curl_init();
+
+                      curl_setopt($ch, CURLOPT_URL, 'https://ipinfo.io/'.$_SERVER["REMOTE_ADDR"].'?token=7ac8e9c9be73ba');
+                      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                      
+                      $result = curl_exec($ch);
+                      if (curl_errno($ch)) {
+                        echo 'Error:' . curl_error($ch);
+                      }
+                      curl_close($ch);
+                      $data = json_decode($result);
+                      ?>
                   <script>
                     var map = L.map('map');
                     var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
                     L.Routing.control({
                       waypoints: [
-                        L.latLng(<?= $geolocation_json->loc; ?>),
+                        L.latLng(<?= $data->loc; ?>),
                         L.latLng(<?= $row_vw['latitude'] ?>, <?= $row_vw['longitude'] ?>)
                       ]
                     }).addTo(map);
